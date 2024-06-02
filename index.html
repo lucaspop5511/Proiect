@@ -5,14 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task Manager</title>
+    <link rel="icon" href="icon.png" type="image/png">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 
 <body>
+    <img src="icon.png" alt="Icon" class="icon">
     <div class="container">
         <h1>Task Manager</h1>
         <ul id="task-list"></ul>
-        <button id="add-task-button">Add Task</button>
+        <button id="add-task-button"><span class="plus-sign">+</span> <span class="button-text">Add Task</span></button>
+        <div id="validation-message"></div>
     </div>
     <script src="app.js"></script>
 </body>

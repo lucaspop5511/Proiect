@@ -2,17 +2,23 @@ document.addEventListener('DOMContentLoaded', loadTasks);
 
 const taskList = document.getElementById('task-list');
 const addTaskButton = document.getElementById('add-task-button');
+const validationMessage = document.getElementById('validation-message');
 
-addTaskButton.addEventListener('click', addTask);
+addTaskButton.addEventListener('click', handleAddTask);
 
 function loadTasks() {
     const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
     tasks.forEach(task => displayTask(task));
 }
 
+function handleAddTask(event) {
+    if (event.type === 'click' || event.key === 'Enter') {
+        addTask();
+    }
+}
+
 function addTask() {
     if (!validateLastTask()) {
-        alert('Please complete the previous task before adding a new one.');
         return;
     }
 
@@ -25,6 +31,7 @@ function addTask() {
 
     displayTask(task);
     saveTask(task);
+    clearValidationMessage();
 }
 
 function validateLastTask() {
@@ -35,7 +42,21 @@ function validateLastTask() {
     const title = lastTask.querySelector('input').value.trim();
     const description = lastTask.querySelector('textarea').value.trim();
 
-    return title !== '' && description !== '';
+    if (title === '' || description === '') {
+        showValidationMessage('Please complete the title and description.');
+        return false;
+    }
+
+    clearValidationMessage();
+    return true;
+}
+
+function showValidationMessage(message) {
+    validationMessage.textContent = message;
+}
+
+function clearValidationMessage() {
+    validationMessage.textContent = '';
 }
 
 function displayTask(task) {
@@ -68,7 +89,7 @@ function displayTask(task) {
 
     const deleteButton = document.createElement('button');
     deleteButton.className = 'delete';
-    deleteButton.innerText = 'Delete';
+    deleteButton.innerHTML = '<i class="fas fa-trash"></i>';
     deleteButton.onclick = () => deleteTask(task.id);
 
     li.appendChild(circle);

@@ -6,28 +6,56 @@ body {
     height: 100vh;
     margin: 0;
     background-color: #e4ca9d;
-    background-size: 22px 22px;
-    background-image: repeating-linear-gradient(0deg, #957D60, #957D60 1.1px, #f7f1eb 1.1px, #f7f1eb);
+    background-size: 22px 22px, 100px 100px;
+    background-image:
+        repeating-linear-gradient(0.2deg, #957D60, #957D60 2px, #f7f1eb 2px, #f7f1eb),
+        url('noiseTexture.svg');
+    background-blend-mode: color-burn;
+    overflow: hidden;
+}
+
+.icon {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    width: 50px;
+    height: 50px;
+    z-index: 1000;
 }
 
 .container {
-    background: #C69D7B;
-    padding: 20px;
+    background: #ab815fc6;
+    padding: 2vw;
+    padding-bottom: 1vw;
+    border: solid 4px #426b4c;
     border-radius: 8px;
-    box-shadow: 4px 4px rgba(0, 0, 0);
+    box-shadow: 3vh 3vh #8c6c5170;
     width: 100%;
-    max-width: 400px;
+    max-width: 40vw;
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: max-height 0.3s ease, max-width 0.3s ease;
 }
 
 h1 {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 2vh;
+    margin-top: 0;
+    font-size: 5vw;
+    font-family: 'Concert';
+    color: #426b4c;
+    text-shadow: 3px 3px #d4f0cb98;
 }
 
 ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
+    flex-grow: 1;
+    overflow-y: auto;
+    transition: all 0.3s ease;
 }
 
 .task {
@@ -35,7 +63,8 @@ ul {
     align-items: center;
     margin: 10px 0;
     padding: 10px;
-    border: 3px solid #8c6c51;
+    border: 3px solid;
+    border-color: #8c6c51;
     border-radius: 8px;
     box-shadow: 5px 5px #8c6c51 inset;
 }
@@ -68,8 +97,11 @@ ul {
 }
 
 .task .content textarea {
+    color: rgb(61, 61, 61);
+}
+
+.task .content textarea {
     resize: none;
-    overflow: visible;
 }
 
 .task .content input:focus,
@@ -77,19 +109,34 @@ ul {
     outline: none;
 }
 
+.task .content input::placeholder,
+.task .content textarea::placeholder {
+    color: #aa8a70;
+}
+
 .task .content input,
 .task .content textarea,
 .task {
     background-color: #9d795b;
+    overflow: hidden;
 }
 
 .task .delete {
-    background-color: #b34752;
+    background-color: #c4545f;
     border: none;
     border-radius: 4px;
-    color: white;
+    color: rgb(255, 249, 249);
     padding: 5px 10px;
     cursor: pointer;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.task .delete i {
+    font-size: 1.2em;
 }
 
 #add-task-button {
@@ -98,12 +145,70 @@ ul {
     background-color: #426b4c;
     border: none;
     border-radius: 4px;
-    color: white;
-    font-size: 1em;
+    box-shadow: 0 5px rgb(21, 61, 6);
+    color: rgb(199, 216, 197);
+    font-family: 'Concert';
+    font-size: 2vw;
     cursor: pointer;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#add-task-button .button-text {
+    display: inline-block;
+    transition: all 0.5s ease;
+    margin-left: 5px;
+}
+
+#add-task-button .plus-sign {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+#add-task-button:hover .button-text {
+    transform: translateX(5px);
+}
+
+#add-task-button:hover .plus-sign {
+    opacity: 1;
+}
+
+#add-task-button:active {
+    top: 5px;
+    box-shadow: inset 0 3px rgb(21, 61, 6);
+}
+
+#validation-message {
+    color: #8a363e;
+    font-weight: bold;
     margin-top: 10px;
 }
 
-#add-task-button:hover {
-    background-color: #3a5e43;
+ul::-webkit-scrollbar {
+    display: none;
+}
+
+ul {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+@font-face {
+    font-family: 'Caveat';
+    src: url(Fonts/Caveat/Caveat-VariableFont_wght.ttf);
+}
+
+@font-face {
+    font-family: 'Concert';
+    src: url(Fonts/Concert_One/ConcertOne-Regular.ttf);
+}
+
+@font-face {
+    font-family: 'Kalam';
+    src: url(Fonts/Kalam/Kalam-Regular.ttf);
 }
