@@ -37,7 +37,7 @@ body {
     border-radius: 8px;
     box-shadow: 3vh 3vh #8c6c5170;
     width: 100%;
-    max-width: 40vw;
+    max-width: 60vw;
     max-height: 80vh;
     display: flex;
     flex-direction: column;
