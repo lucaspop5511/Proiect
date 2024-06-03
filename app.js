@@ -12,7 +12,7 @@ function loadTasks() {
 }
 
 function handleAddTask(event) {
-    if (event.type === 'click' || event.key === 'Enter') {
+    if (event.type === 'click') {
         addTask();
     }
 }
@@ -43,7 +43,7 @@ function validateLastTask() {
     const description = lastTask.querySelector('textarea').value.trim();
 
     if (title === '' || description === '') {
-        showValidationMessage('Please complete the title and description.');
+        showValidationMessage('Please add a title and description.');
         return false;
     }
 

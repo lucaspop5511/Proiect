@@ -16,11 +16,17 @@ body {
 
 .icon {
     position: fixed;
-    top: 15px;
-    left: 15px;
+    top: 20px;
+    left: 25px;
     width: 50px;
     height: 50px;
-    z-index: 1000;
+    z-index: 2;
+    transition: all 0.5s ease;
+}
+
+.icon:hover {
+    transform: scale(1.1);
+    mix-blend-mode: darken;
 }
 
 .container {
@@ -75,6 +81,7 @@ ul {
     border: 2px solid #000000;
     border-radius: 50%;
     margin-right: 10px;
+    margin-left: .4vw;
     cursor: pointer;
     flex-shrink: 0;
 }
@@ -93,11 +100,12 @@ ul {
     border: none;
     padding: 0;
     margin: 0;
-    font-size: 1em;
+    font-size: calc(1rem + 1vw);
 }
 
 .task .content textarea {
     color: rgb(61, 61, 61);
+    font-size: 1rem;
 }
 
 .task .content textarea {
@@ -148,7 +156,7 @@ ul {
     box-shadow: 0 5px rgb(21, 61, 6);
     color: rgb(199, 216, 197);
     font-family: 'Concert';
-    font-size: 2vw;
+    font-size: calc(2vw + 1vh);
     cursor: pointer;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -206,9 +214,4 @@ ul {
 @font-face {
     font-family: 'Concert';
     src: url(Fonts/Concert_One/ConcertOne-Regular.ttf);
-}
-
-@font-face {
-    font-family: 'Kalam';
-    src: url(Fonts/Kalam/Kalam-Regular.ttf);
 }
